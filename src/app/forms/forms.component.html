@@ -1,17 +1,22 @@
-
-<form [formGroup]="form" class="form-container">
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="form-container">
     <table  cellspacing="25">
         <tr>
             <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre</mat-label>
-                    <input matInput type="text" [formControlName]="'username'"/>
+                    <input matInput type="text" [formControlName]="'firstname'"/>
+                    <div class = "warning" *ngIf="form.get('firstname').hasError('required')">
+                        Campo requerido
+                    </div>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Apellidos</mat-label>
-                    <input matInput type="text"/>
+                    <input matInput type="text" [formControlName]= "'lastname'"/>
+                    <div class = "warning" *ngIf="form.get('lastname').hasError('required')">
+                        Campo requerido
+                    </div>
                 </mat-form-field>
             </td>
         </tr>
@@ -19,15 +24,57 @@
             <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Teléfono</mat-label>
-                    <input matInput type="tel"/>
+                    <input matInput type="tel" [formControlName]= "'telephone'"/>
+                    <div class="warning" *ngIf="form.get('telephone').hasError('minLength')">
+                        Mínimo 9 dígitos
+                    </div>
+                    <div class="warning" *ngIf="form.get('telephone').hasError('required')">
+                        Campo requerido
+                    </div>
                 </mat-form-field>
+                
             </td>
             <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput type="email"/>
+                    <input matInput type="email" [formControlName]= "'email'"/>
+                    <div class="warning" *ngIf="form.get('email').hasError('required')">
+                        Campo requerido
+                    </div>
+                    <div class="warning" *ngIf="form.get('email').hasError('email')">
+                        Email inválido
+                    </div>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" [formControlName]= "'password'"/>
+                    <div class="warning" *ngIf="form.get('password').hasError('required')">
+                        Campo requerido
+                    </div>
+                    <div class="warning" *ngIf="form.get('password').hasError('pattern')">
+                        No es una contraseña fuerte
+                    </div>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Repetir Contraseña</mat-label>
+                    <input matInput type="password" [formControlName]= "'repeatedPassword'"/>
+                    <div class="warning" *ngIf="form.get('repeatedPassword').hasError('required')">
+                        Campo requerido
+                    </div>
+                    <div class="warning" *ngIf="form.get('repeatedPassword').hasError('checkRepeatedPassword')">
+                        La contraseña no coincide
+                    </div>
                 </mat-form-field>
             </td>
         </tr>
     </table>
+    <button [disabled]="!form.valid" mat-raised-button color="primary" input="submit" class="button"> Enviar </button>
 </form>
+
+
