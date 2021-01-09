@@ -13,7 +13,7 @@ export class FormsComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
     // Al instanciar el componente, este se inicializa con dos elementos: username y password.
     this.form = this.fb.group({
-      username: ["Aquí va un usuario"],
+      username: [],
       userpassword : [] 
     });
   }

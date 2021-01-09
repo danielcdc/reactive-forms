@@ -1,5 +1,33 @@
 
-<form [formGroup]="form">
-    <input type="text" [formControlName]="'username'"/>
-    <input type="password" [formControlName]="'password'"/>
+<form [formGroup]="form" class="form-container">
+    <table  cellspacing="25">
+        <tr>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" [formControlName]="'username'"/>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput type="text"/>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput type="tel"/>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email"/>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
 </form>
